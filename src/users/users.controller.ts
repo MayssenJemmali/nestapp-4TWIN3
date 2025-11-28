@@ -27,7 +27,11 @@ export class UsersController {
     }
     //http://localhost:3000/users/details/2
     @Get('/details/:id')
-    getUserDetails(@Param('id') id: number) {
+    getUserDetails(@Param('id') id: number, @Query() query: string) {
+        console.log(id);
+        console.log(query);
+        
+        
         return this.users.find(user => user.id === Number(id));
     }
 
