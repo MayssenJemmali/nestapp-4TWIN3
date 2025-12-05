@@ -35,7 +35,7 @@ export class MessagesController {
     createMessage(@Body() body: CreateMessageDTO) {
         console.log("Create Message");
         console.log(body.content);
-        this.messagesService.create(body.content)
+        this.messagesService.create(body.content, body.status)
         return body;
     }
 }
