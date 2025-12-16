@@ -21,11 +21,12 @@ return this.messagesRepository.find()
 }
 
 create(content: string, status: string) {
-this.messagesRepository.save({ content, status })
+ const message = this.messagesRepository.create({ content, status });
+ return this.messagesRepository.save(message);
 }
 
-update(id: string, message: Partial<Message>) {
-    const msg=this.messagesRepository.findOneById(id);
+async update(id: string, message: Partial<Message>) {
+    const msg = await this.messagesRepository.findOneById(id);
     if(!msg){
         throw new NotFoundException("Message not found");
     }
